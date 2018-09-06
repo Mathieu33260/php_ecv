@@ -249,39 +249,41 @@ class Parking {
 }
 
 //build the first car
-$porshe = new Car(true,"porshe");
+$porsche = new Car(true,"porsche");
 
 //Now i flat my tire
-$porshe->getWheels()[$porshe->getNbWheel()-1]->setFlat(true);
+$porsche->getWheels()[$porsche->getNbWheel()-1]->setFlat(true);
 
 //Now fix car
-$porshe->setBroken(false);
+$porsche->setBroken(false);
 
 // Now fix flat week 
-foreach($porshe->getWheels() as $wheel) {
+foreach($porsche->getWheels() as $wheel) {
     $wheel->setFlat(false);
 }
 
 // Car broke again 
-$porshe->setBroken(true);
+$porsche->setBroken(true);
 
 // So we have to fix again ....
-$porshe->setBroken(false);
+$porsche->setBroken(false);
 
 //build a second car 
 $fiat = new Car(true,"fiat");
 
 //Park cars in my parking
 $parking = new Parking();
-$parking->addCar($porshe);
+$parking->addCar($porsche);
 $parking->addCar($fiat);
 
 //take my car with brand
 $myPorsche = null;
 foreach($parking->getCars() as $car){
-	if($car->getBrand() === 'porsche'){
-		$myPorsche = $car;
+	if($car->getBrand() == 'porsche'){
+		$myPorsche = clone $car;
 	}
 }
 
 var_dump($myPorsche);
+var_dump($fiat);
+var_dump($parking);
