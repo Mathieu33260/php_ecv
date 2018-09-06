@@ -280,7 +280,7 @@ $parking->addCar($fiat);
 $myPorsche = null;
 foreach($parking->getCars() as $car){
 	if($car->getBrand() == 'porsche'){
-		$myPorsche = clone $car;
+		$myPorsche = $car;
 	}
 }
 
